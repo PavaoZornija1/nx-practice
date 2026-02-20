@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-next-nest-prisma-ory-template/auth": ["packages/auth/src/index.ts"],
       "@nx-next-nest-prisma-ory-template/config": [
         "packages/config/src/index.ts"
       ],
@@ -24,12 +23,6 @@
       ],
       "@nx-next-nest-prisma-ory-template/error": [
         "packages/error/src/index.ts"
-      ],
-      "@nx-next-nest-prisma-ory-template/notes": [
-        "packages/notes/src/index.ts"
-      ],
-      "@nx-next-nest-prisma-ory-template/opentelemetry": [
-        "packages/opentelemetry/src/index.ts"
       ],
       "@nx-next-nest-prisma-ory-template/types": [
         "packages/types/src/index.ts"

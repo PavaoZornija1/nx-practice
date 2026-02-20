@@ -1,9 +1,3 @@
-// Otel must be imported before any other modules
-import {
-  otelEnabled,
-  otelSDK,
-} from '@nx-next-nest-prisma-ory-template/opentelemetry';
-
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import {
@@ -17,33 +11,21 @@ import {
 } from '@nx-next-nest-prisma-ory-template/error';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ResponseFormatterInterceptor } from '@nx-next-nest-prisma-ory-template/utils';
-import { Logger } from 'nestjs-pino';
 import helmet from '@fastify/helmet';
 import csrf from '@fastify/csrf-protection';
 
 async function bootstrap() {
-  if (otelEnabled) {
-    await otelSDK.start();
-  }
-
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter(),
-    {
-      bufferLogs: true,
-    }
+    new FastifyAdapter()
   );
-
-  if (otelEnabled) {
-    app.useLogger(app.get(Logger));
-  }
 
   const httpAdapter = app.getHttpAdapter();
 
   // Security plugins
   app.enableCors();
-  await app.register(helmet);
-  await app.register(csrf);
+  await app.register(helmet as never);
+  await app.register(csrf as never);
 
   // Validation pipe
   app.useGlobalPipes(

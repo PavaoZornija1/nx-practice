@@ -5,7 +5,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-.pnpm-debug.log*
+.pnpm-store/*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -189,7 +189,7 @@ Session.vim
 ### windows
 Desktop.ini
 $RECYCLE.BIN/
-Thumbs.db 
+Thumbs.db
 
 ## commonly used temp files and directories
 *.log

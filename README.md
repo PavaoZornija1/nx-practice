@@ -2,15 +2,14 @@
 
 ## Overview
 
-This repository contains a template for a full-stack application utilizing a powerful tech stack: NX workspace, NestJS, NextJS, Prisma, and Ory. This combination offers a scalable, modern architecture suitable for complex applications.
+This repository is a full-stack template: NX monorepo, NestJS API, two Next.js frontends (Site Manager + Dispatcher), and Prisma with PostgreSQL.
 
 ## Features
 
-- **NX Workspace**: Efficient monorepo management for sharing code and tools.
-- **NestJS**: A versatile, progressive Node.js framework for building efficient and scalable server-side applications.
-- **NextJS**: A React-based framework for building user-friendly and performant web applications.
-- **Prisma**: Next-generation ORM for Node.js and TypeScript, simplifying database workflows.
-- **Ory**: Robust security layer offering identity management, authorization, and authentication.
+- **NX Workspace**: Monorepo with shared packages and tooling.
+- **NestJS**: Backend API (Fastify).
+- **Next.js**: Site Manager (port 3000) and Dispatcher (port 3001).
+- **Prisma**: PostgreSQL ORM with generated DTOs and migrations.
 
 ## Getting Started
 
@@ -43,13 +42,7 @@ This repository contains a template for a full-stack application utilizing a pow
 
    Set up your `.env` file based on the provided `.env.example`.
 
-5. **Startup the Stack**
-
-   ```bash
-   pnpm dev:docker:up
-   ```
-
-6. **Run Migrations**
+5. **Run Migrations**
 
    ```bash
    pnpm migrate:deploy
@@ -57,12 +50,28 @@ This repository contains a template for a full-stack application utilizing a pow
 
 ### Running the Application
 
-- **Development Mode**
+- **All apps (API + Site Manager + Dispatcher)**
+
+  ```bash
+  pnpm dev
+  ```
+
+  - Site Manager (public): http://localhost:3000  
+  - Dispatcher (admin): http://localhost:3001  
+  - API: http://localhost:3100  
+
+- **Single app**
 
   ```bash
   pnpm dev:api
-  # or
-  pnpm dev:www
+  pnpm dev:site-manager    # or dev:manager
+  pnpm dev:dispatcher
+  ```
+
+- **Lint (all projects)**
+
+  ```bash
+  pnpm run lint
   ```
 
 - **Production Build**
@@ -70,7 +79,7 @@ This repository contains a template for a full-stack application utilizing a pow
   ```bash
   pnpm build:api
   # or
-  pnpm build:www
+  pnpm build:site-manager
   ```
 
 ## Documentation
@@ -79,7 +88,6 @@ This repository contains a template for a full-stack application utilizing a pow
 - [NestJS Documentation](https://nestjs.com/)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Prisma Docs](https://www.prisma.io/docs/)
-- [Ory Documentation](https://www.ory.sh/docs/)
 
 ## Contributing
 
